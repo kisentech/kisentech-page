@@ -30,59 +30,6 @@
     }
 
     /* ── Nav ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: rgba(15,17,23,.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .logo svg {
-      height: 22px;
-      width: auto;
-      display: block;
-      fill: #ffffff;
-    }
-
-    .logo svg:hover { opacity: .85; }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: .9rem;
-      transition: color .2s;
-    }
-
-    nav a:hover { color: var(--text); }
-
-    .lang-switch {
-      padding: .3rem .8rem;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      font-size: .78rem;
-      color: var(--muted);
-      text-decoration: none;
-      transition: border-color .2s, color .2s;
-    }
-
-    .lang-switch:hover {
-      border-color: var(--accent);
-      color: var(--text);
-    }
-
     /* ── Hero ── */
     .hero {
       min-height: 100vh;
@@ -91,7 +38,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 8rem 2rem 4rem;
+      padding: 4rem 2rem;
       position: relative;
       overflow: hidden;
     }
@@ -108,10 +55,11 @@
 
     .hero-logo { margin-bottom: 2.5rem; }
 
-    .hero-logo svg {
-      height: 40px;
-      width: auto;
-      fill: #ffffff;
+    .hero-logo span {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      color: var(--text);
       opacity: .92;
     }
 
@@ -144,6 +92,24 @@
       color: var(--muted);
       font-size: 1.05rem;
       max-width: 520px;
+    }
+
+    .hero-business-name {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      margin-top: 1.5rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .hero-business-name svg {
+      height: 1em;
+      width: auto;
+      aspect-ratio: 282.43 / 43.78;
+      overflow: visible;
+      fill: var(--muted);
+      vertical-align: middle;
     }
 
     .cta-row {
@@ -257,6 +223,73 @@
       background: var(--bg);
     }
 
+    .skill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    .skill-yrs {
+      font-size: .72rem;
+      font-weight: 700;
+      padding: .1rem .45rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      line-height: 1.4;
+    }
+
+    /* ── Experience ── */
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .timeline-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .timeline-year {
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-top: .2rem;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: .3rem;
+    }
+
+    .timeline-org { color: var(--accent); }
+
+    .timeline-role {
+      display: block;
+      color: var(--muted);
+      font-size: .9rem;
+      margin-bottom: .5rem;
+    }
+
+    .timeline-content p.desc {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-content .tags .tag {
+      font-size: .78rem;
+      padding: .3rem .8rem;
+    }
+
     /* ── Process ── */
     .steps {
       display: grid;
@@ -329,25 +362,8 @@
     }
 
     /* ── Theme toggle ── */
-    body, nav, .card, .step {
+    body, .card, .step {
       transition: background-color .25s, color .25s, border-color .25s;
-    }
-
-    .theme-toggle {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: .3rem .65rem;
-      font-size: .9rem;
-      color: var(--muted);
-      cursor: pointer;
-      transition: border-color .2s, color .2s;
-      line-height: 1;
-    }
-
-    .theme-toggle:hover {
-      border-color: var(--accent);
-      color: var(--text);
     }
 
     /* ── Light theme ── */
@@ -361,14 +377,6 @@
       --accent2: #7c5ce8;
     }
 
-    [data-theme="light"] nav {
-      background: rgba(245,247,250,.92);
-    }
-
-    [data-theme="light"] .logo svg,
-    [data-theme="light"] .hero-logo svg {
-      fill: #231815;
-    }
 
     [data-theme="light"] .hero::before {
       background:
@@ -382,56 +390,24 @@
 
     /* ── Responsive ── */
     @media (max-width: 640px) {
-      nav ul { display: none; }
       .hero h1 { font-size: 1.8rem; }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: .5rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Nav -->
-  <nav>
-    <a href="#" class="logo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 282.43 43.78" aria-label="kisentech">
-        <path d="M0,0h7.51v25.44h5.95l5.45-9.19h8.93l-8.33,12.96,9.43,14.02h-8.93l-6.7-10.68h-5.81v10.68H0V0Z"/>
-        <path d="M42.29,23.35h-10.39v-7.1h17.91v19.87h10.39v7.1h-17.91v-19.87ZM46.75.02h7.58v12.02h-7.58V.02Z"/>
-        <path d="M63.89,34.08h8.23c.36,2.4,2.42,3.5,5.5,3.5,2.3,0,4.2-.79,4.2-2.38,0-1.37-1.49-1.85-2.83-2.06l-5.45-.89c-5.35-.86-8.5-3.89-8.5-8.11,0-5.16,4.75-8.54,11.54-8.54s12.02,3.29,12.43,8.95h-8.23c-.24-1.82-2.18-2.76-4.39-2.76s-3.7.89-3.7,2.18c0,.98.89,1.73,2.81,2.06l5.45.96c5.71,1.01,8.54,3.77,8.54,7.85,0,5.4-4.82,8.93-11.98,8.93-7.56,0-13.3-3.62-13.63-9.7Z"/>
-        <path d="M93.21,29.95c0-8.64,6.34-14.35,14.52-14.35,8.62,0,14.09,6.19,14.09,14.38v1.94h-21.36c.77,3.38,3.43,5.35,7.27,5.35,2.83,0,5.04-1.08,5.71-3.1h8.23c-1.82,6.29-7.06,9.6-13.85,9.6-8.88,0-14.62-5.66-14.62-13.83ZM100.7,26.83h13.9c-1.01-2.9-3.31-4.73-6.91-4.73s-5.98,1.78-6.98,4.73Z"/>
-        <path d="M126.07,16.25h7.51v3.14c1.42-2.45,4.58-3.74,8.42-3.74,7.25,0,11.76,4.32,11.76,11.09v16.49h-7.51v-14.5c0-3.72-2.06-5.95-5.95-5.95-3.48,0-6.46,1.87-6.72,6.29v14.16h-7.51v-26.98Z"/>
-        <path d="M168.43,23.35h-10.39v-7.1h10.39V1.37h7.51v14.88h10.39v7.1h-10.39v19.87h-7.51v-19.87Z"/>
-        <path d="M189.98,29.95c0-8.64,6.34-14.35,14.52-14.35,8.62,0,14.09,6.19,14.09,14.38v1.94h-21.36c.77,3.38,3.43,5.35,7.27,5.35,2.83,0,5.04-1.08,5.71-3.1h8.23c-1.82,6.29-7.06,9.6-13.85,9.6-8.88,0-14.62-5.66-14.62-13.83ZM197.46,26.83h13.9c-1.01-2.9-3.31-4.73-6.91-4.73s-5.98,1.78-6.99,4.73Z"/>
-        <path d="M222.21,29.71c0-8.3,5.86-14.09,14.35-14.09,7.56,0,13.08,4.56,13.92,11.35h-8.26c-.65-2.64-2.81-4.25-5.66-4.25-4.08,0-6.79,2.76-6.79,6.98s2.71,6.98,6.79,6.98c2.86,0,5.04-1.66,5.69-4.37h8.23c-.82,6.84-6.31,11.45-13.92,11.45-8.5,0-14.35-5.81-14.35-14.07Z"/>
-        <path d="M254.73,0h7.51v19.39c1.42-2.45,4.58-3.74,8.42-3.74,7.22,0,11.76,4.34,11.76,11.09v16.49h-7.51v-14.5c0-3.72-2.06-5.95-5.95-5.95-3.48,0-6.46,1.87-6.72,6.29v14.16h-7.51V0Z"/>
-      </svg>
-    </a>
-    <ul>
-      <li><a href="#services">サービス</a></li>
-      <li><a href="#stack">技術スタック</a></li>
-      <li><a href="#process">開発の流れ</a></li>
-      <li><a href="#contact">お問い合わせ</a></li>
-      <li><a href="index.html" class="lang-switch">EN</a></li>
-    </ul>
-    <button class="theme-toggle" id="themeToggle" aria-label="ライトモードに切り替え">☀</button>
-  </nav>
-
   <!-- Hero -->
   <div class="hero">
     <div class="hero-logo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 282.43 43.78" aria-label="kisentech">
-        <path d="M0,0h7.51v25.44h5.95l5.45-9.19h8.93l-8.33,12.96,9.43,14.02h-8.93l-6.7-10.68h-5.81v10.68H0V0Z"/>
-        <path d="M42.29,23.35h-10.39v-7.1h17.91v19.87h10.39v7.1h-17.91v-19.87ZM46.75.02h7.58v12.02h-7.58V.02Z"/>
-        <path d="M63.89,34.08h8.23c.36,2.4,2.42,3.5,5.5,3.5,2.3,0,4.2-.79,4.2-2.38,0-1.37-1.49-1.85-2.83-2.06l-5.45-.89c-5.35-.86-8.5-3.89-8.5-8.11,0-5.16,4.75-8.54,11.54-8.54s12.02,3.29,12.43,8.95h-8.23c-.24-1.82-2.18-2.76-4.39-2.76s-3.7.89-3.7,2.18c0,.98.89,1.73,2.81,2.06l5.45.96c5.71,1.01,8.54,3.77,8.54,7.85,0,5.4-4.82,8.93-11.98,8.93-7.56,0-13.3-3.62-13.63-9.7Z"/>
-        <path d="M93.21,29.95c0-8.64,6.34-14.35,14.52-14.35,8.62,0,14.09,6.19,14.09,14.38v1.94h-21.36c.77,3.38,3.43,5.35,7.27,5.35,2.83,0,5.04-1.08,5.71-3.1h8.23c-1.82,6.29-7.06,9.6-13.85,9.6-8.88,0-14.62-5.66-14.62-13.83ZM100.7,26.83h13.9c-1.01-2.9-3.31-4.73-6.91-4.73s-5.98,1.78-6.98,4.73Z"/>
-        <path d="M126.07,16.25h7.51v3.14c1.42-2.45,4.58-3.74,8.42-3.74,7.25,0,11.76,4.32,11.76,11.09v16.49h-7.51v-14.5c0-3.72-2.06-5.95-5.95-5.95-3.48,0-6.46,1.87-6.72,6.29v14.16h-7.51v-26.98Z"/>
-        <path d="M168.43,23.35h-10.39v-7.1h10.39V1.37h7.51v14.88h10.39v7.1h-10.39v19.87h-7.51v-19.87Z"/>
-        <path d="M189.98,29.95c0-8.64,6.34-14.35,14.52-14.35,8.62,0,14.09,6.19,14.09,14.38v1.94h-21.36c.77,3.38,3.43,5.35,7.27,5.35,2.83,0,5.04-1.08,5.71-3.1h8.23c-1.82,6.29-7.06,9.6-13.85,9.6-8.88,0-14.62-5.66-14.62-13.83ZM197.46,26.83h13.9c-1.01-2.9-3.31-4.73-6.91-4.73s-5.98,1.78-6.99,4.73Z"/>
-        <path d="M222.21,29.71c0-8.3,5.86-14.09,14.35-14.09,7.56,0,13.08,4.56,13.92,11.35h-8.26c-.65-2.64-2.81-4.25-5.66-4.25-4.08,0-6.79,2.76-6.79,6.98s2.71,6.98,6.79,6.98c2.86,0,5.04-1.66,5.69-4.37h8.23c-.82,6.84-6.31,11.45-13.92,11.45-8.5,0-14.35-5.81-14.35-14.07Z"/>
-        <path d="M254.73,0h7.51v19.39c1.42-2.45,4.58-3.74,8.42-3.74,7.22,0,11.76,4.34,11.76,11.09v16.49h-7.51v-14.5c0-3.72-2.06-5.95-5.95-5.95-3.48,0-6.46,1.87-6.72,6.29v14.16h-7.51V0Z"/>
-      </svg>
+      <span>気仙 拓也</span>
     </div>
-    <span class="badge">個人事業主・ソフトウェアエンジニア</span>
-    <h1>CMS開発で、<br />ビジネスを<span>加速する</span></h1>
-    <p>kisentechは、信頼性・保守性・パフォーマンスを兼ね備えたCMSおよびWebシステムを、お客様のニーズに合わせてフルスクラッチで構築します。</p>
+    <span>CMSエンジニア、ソフトウェアエンジニア</span>
+    <p class="hero-business-name">ビジネスネームは<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 282.43 43.78" width="282.43" height="43.78" aria-label="kisentech"><path d="M0,0h7.51v25.44h5.95l5.45-9.19h8.93l-8.33,12.96,9.43,14.02h-8.93l-6.7-10.68h-5.81v10.68H0V0Z"/><path d="M42.29,23.35h-10.39v-7.1h17.91v19.87h10.39v7.1h-17.91v-19.87ZM46.75.02h7.58v12.02h-7.58V.02Z"/><path d="M63.89,34.08h8.23c.36,2.4,2.42,3.5,5.5,3.5,2.3,0,4.2-.79,4.2-2.38,0-1.37-1.49-1.85-2.83-2.06l-5.45-.89c-5.35-.86-8.5-3.89-8.5-8.11,0-5.16,4.75-8.54,11.54-8.54s12.02,3.29,12.43,8.95h-8.23c-.24-1.82-2.18-2.76-4.39-2.76s-3.7.89-3.7,2.18c0,.98.89,1.73,2.81,2.06l5.45.96c5.71,1.01,8.54,3.77,8.54,7.85,0,5.4-4.82,8.93-11.98,8.93-7.56,0-13.3-3.62-13.63-9.7Z"/><path d="M93.21,29.95c0-8.64,6.34-14.35,14.52-14.35,8.62,0,14.09,6.19,14.09,14.38v1.94h-21.36c.77,3.38,3.43,5.35,7.27,5.35,2.83,0,5.04-1.08,5.71-3.1h8.23c-1.82,6.29-7.06,9.6-13.85,9.6-8.88,0-14.62-5.66-14.62-13.83ZM100.7,26.83h13.9c-1.01-2.9-3.31-4.73-6.91-4.73s-5.98,1.78-6.98,4.73Z"/><path d="M126.07,16.25h7.51v3.14c1.42-2.45,4.58-3.74,8.42-3.74,7.25,0,11.76,4.32,11.76,11.09v16.49h-7.51v-14.5c0-3.72-2.06-5.95-5.95-5.95-3.48,0-6.46,1.87-6.72,6.29v14.16h-7.51v-26.98Z"/><path d="M168.43,23.35h-10.39v-7.1h10.39V1.37h7.51v14.88h10.39v7.1h-10.39v19.87h-7.51v-19.87Z"/><path d="M189.98,29.95c0-8.64,6.34-14.35,14.52-14.35,8.62,0,14.09,6.19,14.09,14.38v1.94h-21.36c.77,3.38,3.43,5.35,7.27,5.35,2.83,0,5.04-1.08,5.71-3.1h8.23c-1.82,6.29-7.06,9.6-13.85,9.6-8.88,0-14.62-5.66-14.62-13.83ZM197.46,26.83h13.9c-1.01-2.9-3.31-4.73-6.91-4.73s-5.98,1.78-6.99,4.73Z"/><path d="M222.21,29.71c0-8.3,5.86-14.09,14.35-14.09,7.56,0,13.08,4.56,13.92,11.35h-8.26c-.65-2.64-2.81-4.25-5.66-4.25-4.08,0-6.79,2.76-6.79,6.98s2.71,6.98,6.79,6.98c2.86,0,5.04-1.66,5.69-4.37h8.23c-.82,6.84-6.31,11.45-13.92,11.45-8.5,0-14.35-5.81-14.35-14.07Z"/><path d="M254.73,0h7.51v19.39c1.42-2.45,4.58-3.74,8.42-3.74,7.22,0,11.76,4.34,11.76,11.09v16.49h-7.51v-14.5c0-3.72-2.06-5.95-5.95-5.95-3.48,0-6.46,1.87-6.72,6.29v14.16h-7.51V0Z"/></svg>です。</p>
     <div class="cta-row">
       <a href="#contact" class="btn btn-primary">お問い合わせ</a>
       <a href="#services" class="btn btn-outline">サービスを見る</a>
@@ -484,15 +460,16 @@
       <h2>技術スタック</h2>
       <p class="sub">長期的な安定性・エコシステムの健全性・実際の開発体験を重視して選定した技術セットです。</p>
       <div class="tags">
+        <span class="tag skill-tag">C# <span class="skill-yrs">2+ yrs</span></span>
         <span class="tag">WordPress</span>
         <span class="tag">Strapi</span>
         <span class="tag">Contentful</span>
         <span class="tag">Sanity</span>
         <span class="tag">Next.js</span>
         <span class="tag">React</span>
-        <span class="tag">TypeScript</span>
+        <span class="tag skill-tag">TypeScript <span class="skill-yrs">3+ yrs</span></span>
         <span class="tag">Node.js</span>
-        <span class="tag">PHP</span>
+        <span class="tag skill-tag">PHP <span class="skill-yrs">5+ yrs</span></span>
         <span class="tag">PostgreSQL</span>
         <span class="tag">MySQL</span>
         <span class="tag">REST API</span>
@@ -504,6 +481,54 @@
       </div>
     </section>
   </div>
+
+  <!-- Experience -->
+  <section id="experience">
+    <div class="section-label">Career</div>
+    <h2>経歴</h2>
+    <p class="sub">プレースホルダーの経歴です。実際の役職・期間・クライアントに置き換えてください。</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2023 — 現在</div>
+        <div class="timeline-content">
+          <h3>代表・ソフトウェア開発者 · <span class="timeline-org">kisentech</span></h3>
+          <p class="desc">中小企業向けにカスタムCMSやWebアプリケーションを構築する個人事業を運営。要件定義から開発・リリース、運用保守まで一貫して担当しています。</p>
+          <div class="tags">
+            <span class="tag">PHP</span>
+            <span class="tag">WordPress</span>
+            <span class="tag">Next.js</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">PostgreSQL</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2020 — 2023</div>
+        <div class="timeline-content">
+          <h3>ソフトウェアエンジニア · <span class="timeline-org">[会社名]</span></h3>
+          <span class="timeline-role">ジュニアエンジニア</span>
+          <p class="desc">大企業向けのCMS駆動型Webアプリケーションの開発・保守を担当。デザイナーやプロダクトマネージャーと連携し、定期的なリリースサイクルで機能を提供しました。</p>
+          <div class="tags">
+            <span class="tag">PHP</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2018 — 2020</div>
+        <div class="timeline-content">
+          <h3>ジュニア開発者 · <span class="timeline-org">[会社名]</span></h3>
+          <p class="desc">マーケティングサイトや社内ツールの構築・デザインを担当し、CMSアーキテクチャとフロントエンド開発の基礎を学びました。</p>
+          <div class="tags">
+            <span class="tag">HTML & SCSS</span>
+            <span class="tag">PHP</span>
+            <span class="tag">WordPress</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Process -->
   <section id="process">
@@ -547,22 +572,5 @@
     <p>&copy; 2026 kisentech. All rights reserved.</p>
   </footer>
 
-  <script>
-    (function () {
-      var btn = document.getElementById('themeToggle');
-      function applyTheme(t) {
-        document.documentElement.setAttribute('data-theme', t);
-        localStorage.setItem('theme', t);
-        btn.textContent = t === 'dark' ? '☀' : '☽';
-        btn.setAttribute('aria-label', t === 'dark' ? 'ライトモードに切り替え' : 'ダークモードに切り替え');
-      }
-      var stored = localStorage.getItem('theme') || 'dark';
-      btn.textContent = stored === 'dark' ? '☀' : '☽';
-      btn.setAttribute('aria-label', stored === 'dark' ? 'ライトモードに切り替え' : 'ダークモードに切り替え');
-      btn.addEventListener('click', function () {
-        applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-      });
-    }());
-  </script>
 </body>
 </html>
