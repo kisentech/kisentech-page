@@ -285,9 +285,47 @@
       margin-bottom: 1rem;
     }
 
+    .timeline-content ul.desc-list {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-bottom: 1rem;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .timeline-content ul.desc-list li {
+      margin-bottom: .3rem;
+      padding-left: 1.3rem;
+      position: relative;
+    }
+
+    .timeline-content ul.desc-list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+
+    .timeline-content ul.desc-list li:last-child {
+      margin-bottom: 0;
+    }
+
     .timeline-content .tags .tag {
       font-size: .78rem;
       padding: .3rem .8rem;
+    }
+
+    .timeline-group + .timeline-group {
+      margin-top: 3rem;
+    }
+
+    .timeline-group-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      padding-bottom: .75rem;
+      margin-bottom: 0;
+      border-bottom: 1px solid var(--border);
     }
 
     /* ── Process ── */
@@ -488,42 +526,74 @@
     <h2>経歴</h2>
     <p class="sub">プレースホルダーの経歴です。実際の役職・期間・クライアントに置き換えてください。</p>
     <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-year">2023 — 現在</div>
-        <div class="timeline-content">
-          <h3>代表・ソフトウェア開発者 · <span class="timeline-org">kisentech</span></h3>
-          <p class="desc">中小企業向けにカスタムCMSやWebアプリケーションを構築する個人事業を運営。要件定義から開発・リリース、運用保守まで一貫して担当しています。</p>
-          <div class="tags">
-            <span class="tag">PHP</span>
-            <span class="tag">WordPress</span>
-            <span class="tag">Next.js</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">PostgreSQL</span>
+      <div class="timeline-group">
+        <h3 class="timeline-group-title">フリーランスITエンジニアとしての経歴</h3>
+        <div class="timeline-item">
+          <div class="timeline-year">2025 — 現在</div>
+          <div class="timeline-content">
+            <h3>Adobe Experience Manager (AEM)開発</h3>
+            <ul class="desc-list">
+              <li>開発 - AEMカスタマイズ、コンポーネント、テンプレート、ワークフロー制作</li>
+              <li>Managed Serviceからas a Cloud Serviceへの移行</li>
+              <li>LP制作</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">AEM On-premise</span>
+              <span class="tag">AEM Managed Service</span>
+              <span class="tag">AEM as a Cloud Service</span>
+              <span class="tag">Java</span>
+              <span class="tag">HTML</span>
+              <span class="tag">css, SCSS, LESS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">AWS</span>
+              <span class="tag">Claude Code</span>
+            </div>
           </div>
         </div>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2020 — 2023</div>
-        <div class="timeline-content">
-          <h3>ソフトウェアエンジニア · <span class="timeline-org">[会社名]</span></h3>
-          <span class="timeline-role">ジュニアエンジニア</span>
-          <p class="desc">大企業向けのCMS駆動型Webアプリケーションの開発・保守を担当。デザイナーやプロダクトマネージャーと連携し、定期的なリリースサイクルで機能を提供しました。</p>
-          <div class="tags">
-            <span class="tag">PHP</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">JavaScript</span>
+      <div class="timeline-group">
+        <h3 class="timeline-group-title">会社員としての経歴</h3>
+        <div class="timeline-item">
+          <div class="timeline-year">2019 — 2024</div>
+          <div class="timeline-content">
+            <h3>Adobe Experience Manager (AEM)開発</h3>
+            <ul class="desc-list">
+              <li>AEM環境構築・保守</li>
+              <li>AEM開発 - カスタマイズ、コンポーネント、テンプレート、ワークフロー制作、コンテンツ制作等</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">AEM On-premise</span>
+              <span class="tag">Java</span>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">React</span>
+              <span class="tag">SQL</span>
+              <span class="tag">GraphQL</span>
+              <span class="tag">Apache httpd</span>
+              <span class="tag">Linux</span>
+              <span class="tag">AWS</span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2018 — 2020</div>
-        <div class="timeline-content">
-          <h3>ジュニア開発者 · <span class="timeline-org">[会社名]</span></h3>
-          <p class="desc">マーケティングサイトや社内ツールの構築・デザインを担当し、CMSアーキテクチャとフロントエンド開発の基礎を学びました。</p>
-          <div class="tags">
-            <span class="tag">HTML & SCSS</span>
-            <span class="tag">PHP</span>
-            <span class="tag">WordPress</span>
+        <div class="timeline-item">
+          <div class="timeline-year">2014 — 2019</div>
+          <div class="timeline-content">
+            <h3>金融機関システム開発</h3>
+            <ul class="desc-list">
+              <li>金融機関の基幹システムおよび社内業務システムの開発・保守</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">C#</span>
+              <span class="tag">C++</span>
+              <span class="tag">Visual Basic</span>
+              <span class="tag">Java</span>
+              <span class="tag">Cobol</span>
+              <span class="tag">.NET Framework</span>
+              <span class="tag">SQL</span>
+              <span class="tag">Windows Server</span>
+            </div>
           </div>
         </div>
       </div>
