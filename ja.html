@@ -44,48 +44,19 @@
       overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(91,141,238,.15) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(167,139,250,.1) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .hero-logo { margin-bottom: 2.5rem; }
-
-    .hero-logo span {
-      font-size: 2.8rem;
+    .hero-name {
+      margin-bottom: 2.5rem;
+      font-size: clamp(2rem, 8vw, 2.8rem);
       font-weight: 700;
       letter-spacing: .05em;
       color: var(--text);
       opacity: .92;
     }
 
-    .badge {
-      display: inline-block;
-      padding: .35rem .9rem;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      font-size: .78rem;
+    .hero-role {
       color: var(--muted);
+      font-size: 1.05rem;
       margin-bottom: 1.5rem;
-    }
-
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.4rem);
-      font-weight: 800;
-      line-height: 1.25;
-      letter-spacing: -.5px;
-      max-width: 720px;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
     .hero p {
@@ -111,38 +82,6 @@
       overflow: visible;
       fill: var(--muted);
       vertical-align: middle;
-    }
-
-    .cta-row {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .btn {
-      padding: .75rem 1.75rem;
-      border-radius: var(--radius);
-      font-size: .95rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: opacity .2s, transform .15s;
-    }
-
-    .btn:hover { opacity: .85; transform: translateY(-1px); }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff;
-      border: none;
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
     }
 
     /* ── Section wrapper ── */
@@ -208,8 +147,8 @@
       padding-top: .2rem;
     }
 
-    .timeline-content h3 {
-      font-size: 1.05rem;
+    .timeline-content h4 {
+      font-size: 1rem;
       font-weight: 700;
       margin-bottom: .3rem;
     }
@@ -264,7 +203,7 @@
     }
 
     .timeline-group-title {
-      font-size: 1rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--text);
       padding-bottom: .75rem;
@@ -273,43 +212,31 @@
     }
 
     /* ── Contact ── */
-    #contact-wrapper {
-      background: linear-gradient(135deg, rgba(91,141,238,.08), rgba(167,139,250,.08));
-      border-top: 1px solid var(--border);
-    }
-
-    .contact-box {
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 6rem 2rem;
-    }
-
-    .contact-box h2 { margin-bottom: 1rem; }
-    .contact-box p { color: var(--muted); margin-bottom: 2rem; }
-
     .email-link {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      padding: .85rem 2rem;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff;
+      display: inline-block;
+      color: var(--text);
       font-weight: 600;
-      border-radius: var(--radius);
+      font-size: 1.1rem;
       text-decoration: none;
-      font-size: 1rem;
-      transition: opacity .2s, transform .15s;
+      transition: color .2s ease;
     }
 
-    .email-link:hover { opacity: .85; transform: translateY(-1px); }
+    .email-link:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .email-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
 
     .social-links {
       display: flex;
       gap: .75rem;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 1.25rem;
+      margin-top: 1.5rem;
     }
 
     .social-link {
@@ -326,9 +253,12 @@
       transition: border-color .2s, transform .15s;
     }
 
-    .social-link svg {
-      width: 18px;
-      height: 18px;
+    .social-link .icon-linkedin-dark,
+    .social-link .icon-linkedin-light,
+    .social-link .icon-github-dark,
+    .social-link .icon-github-light {
+      height: 25px;
+      width: auto;
       flex-shrink: 0;
     }
 
@@ -359,10 +289,20 @@
     /* ── Footer ── */
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: 4rem 2rem 2.5rem;
       border-top: 1px solid var(--border);
       color: var(--muted);
       font-size: .85rem;
+    }
+
+    .footer-message {
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    footer .email-link {
+      margin-bottom: 2.5rem;
     }
 
     /* ── Theme toggle ── */
@@ -417,20 +357,8 @@
     }
 
 
-    [data-theme="light"] .hero::before {
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,111,212,.1) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(124,92,232,.06) 0%, transparent 60%);
-    }
-
-    [data-theme="light"] #contact-wrapper {
-      background: linear-gradient(135deg, rgba(59,111,212,.06), rgba(124,92,232,.06));
-    }
-
     /* ── Responsive ── */
     @media (max-width: 640px) {
-      .hero h1 { font-size: 1.8rem; }
-
       .timeline-item {
         grid-template-columns: 1fr;
         gap: .5rem;
@@ -459,25 +387,35 @@
 
   <!-- Hero -->
   <div class="hero">
-    <div class="hero-logo">
-      <span>気仙 拓也</span>
-    </div>
-    <span>CMSエンジニア、ソフトウェアエンジニア</span>
+    <h1 class="hero-name">気仙 拓也</h1>
+    <span class="hero-role">CMSエンジニア、ソフトウェアエンジニア</span>
     <p>北海道函館市を拠点に活動するエンジニアです。</p>
     <p class="hero-business-name">ビジネスネームは<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 282.43 43.78" width="282.43" height="43.78" aria-label="kisentech"><path d="M0,0h7.51v25.44h5.95l5.45-9.19h8.93l-8.33,12.96,9.43,14.02h-8.93l-6.7-10.68h-5.81v10.68H0V0Z"/><path d="M42.29,23.35h-10.39v-7.1h17.91v19.87h10.39v7.1h-17.91v-19.87ZM46.75.02h7.58v12.02h-7.58V.02Z"/><path d="M63.89,34.08h8.23c.36,2.4,2.42,3.5,5.5,3.5,2.3,0,4.2-.79,4.2-2.38,0-1.37-1.49-1.85-2.83-2.06l-5.45-.89c-5.35-.86-8.5-3.89-8.5-8.11,0-5.16,4.75-8.54,11.54-8.54s12.02,3.29,12.43,8.95h-8.23c-.24-1.82-2.18-2.76-4.39-2.76s-3.7.89-3.7,2.18c0,.98.89,1.73,2.81,2.06l5.45.96c5.71,1.01,8.54,3.77,8.54,7.85,0,5.4-4.82,8.93-11.98,8.93-7.56,0-13.3-3.62-13.63-9.7Z"/><path d="M93.21,29.95c0-8.64,6.34-14.35,14.52-14.35,8.62,0,14.09,6.19,14.09,14.38v1.94h-21.36c.77,3.38,3.43,5.35,7.27,5.35,2.83,0,5.04-1.08,5.71-3.1h8.23c-1.82,6.29-7.06,9.6-13.85,9.6-8.88,0-14.62-5.66-14.62-13.83ZM100.7,26.83h13.9c-1.01-2.9-3.31-4.73-6.91-4.73s-5.98,1.78-6.98,4.73Z"/><path d="M126.07,16.25h7.51v3.14c1.42-2.45,4.58-3.74,8.42-3.74,7.25,0,11.76,4.32,11.76,11.09v16.49h-7.51v-14.5c0-3.72-2.06-5.95-5.95-5.95-3.48,0-6.46,1.87-6.72,6.29v14.16h-7.51v-26.98Z"/><path d="M168.43,23.35h-10.39v-7.1h10.39V1.37h7.51v14.88h10.39v7.1h-10.39v19.87h-7.51v-19.87Z"/><path d="M189.98,29.95c0-8.64,6.34-14.35,14.52-14.35,8.62,0,14.09,6.19,14.09,14.38v1.94h-21.36c.77,3.38,3.43,5.35,7.27,5.35,2.83,0,5.04-1.08,5.71-3.1h8.23c-1.82,6.29-7.06,9.6-13.85,9.6-8.88,0-14.62-5.66-14.62-13.83ZM197.46,26.83h13.9c-1.01-2.9-3.31-4.73-6.91-4.73s-5.98,1.78-6.99,4.73Z"/><path d="M222.21,29.71c0-8.3,5.86-14.09,14.35-14.09,7.56,0,13.08,4.56,13.92,11.35h-8.26c-.65-2.64-2.81-4.25-5.66-4.25-4.08,0-6.79,2.76-6.79,6.98s2.71,6.98,6.79,6.98c2.86,0,5.04-1.66,5.69-4.37h8.23c-.82,6.84-6.31,11.45-13.92,11.45-8.5,0-14.35-5.81-14.35-14.07Z"/><path d="M254.73,0h7.51v19.39c1.42-2.45,4.58-3.74,8.42-3.74,7.22,0,11.76,4.34,11.76,11.09v16.49h-7.51v-14.5c0-3.72-2.06-5.95-5.95-5.95-3.48,0-6.46,1.87-6.72,6.29v14.16h-7.51V0Z"/></svg>です。</p>
+    <div class="social-links">
+      <a href="https://github.com/kisentech" class="social-link icon-only" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <img class="icon-github-dark" src="GitHub_Invertocat_White.svg" alt="" aria-hidden="true" />
+        <img class="icon-github-light" src="GitHub_Invertocat_Black.svg" alt="" aria-hidden="true" />
+      </a>
+      <a href="https://www.linkedin.com/in/%E6%8B%93%E4%B9%9F-%E6%B0%97%E4%BB%99-1239a0411/" class="social-link icon-only" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <img class="icon-linkedin-dark" src="InBug-White.png" alt="" aria-hidden="true" />
+        <img class="icon-linkedin-light" src="LI-In-Bug.png" alt="" aria-hidden="true" />
+      </a>
+      <a href="https://www.lancers.jp/profile/tkisen" class="social-link icon-only" target="_blank" rel="noopener noreferrer">
+        <img src="https://s3.ap-northeast-1.amazonaws.com/wp.lancers.jp/c/wp-content/uploads/2025/01/17115345/logo_9038.png" alt="クラウドソーシング「ランサーズ」" width="90" height="38" />
+      </a>
+    </div>
   </div>
 
   <!-- Experience -->
   <section id="experience">
     <h2>経歴</h2>
-    <p class="sub">プレースホルダーの経歴です。実際の役職・期間・クライアントに置き換えてください。</p>
     <div class="timeline">
       <div class="timeline-group">
         <h3 class="timeline-group-title">フリーランスITエンジニアとしての経歴</h3>
         <div class="timeline-item">
           <div class="timeline-year">2025 — 現在</div>
           <div class="timeline-content">
-            <h3>Adobe Experience Manager (AEM)開発</h3>
+            <h4>主に、Adobe Experience Manager (AEM)開発</h4>
             <ul class="desc-list">
               <li>開発 - AEMカスタマイズ、コンポーネント、テンプレート、ワークフロー制作</li>
               <li>Managed Serviceからas a Cloud Serviceへの移行</li>
@@ -503,7 +441,7 @@
         <div class="timeline-item">
           <div class="timeline-year">2019 — 2024</div>
           <div class="timeline-content">
-            <h3>Adobe Experience Manager (AEM)開発</h3>
+            <h4>Adobe Experience Manager (AEM)開発</h4>
             <ul class="desc-list">
               <li>AEM環境構築・保守</li>
               <li>AEM開発 - カスタマイズ、コンポーネント、テンプレート、ワークフロー制作、コンテンツ制作等</li>
@@ -526,7 +464,7 @@
         <div class="timeline-item">
           <div class="timeline-year">2014 — 2019</div>
           <div class="timeline-content">
-            <h3>金融機関システム開発</h3>
+            <h4>金融機関システム開発</h4>
             <ul class="desc-list">
               <li>金融機関の基幹システムおよび社内業務システムの開発・保守</li>
             </ul>
@@ -546,31 +484,12 @@
     </div>
   </section>
 
-  <!-- Contact -->
-  <div id="contact-wrapper">
-    <div class="contact-box" id="contact">
-      <h2>ご連絡はこちらまで</h2>
-      <a href="mailto:takuya@kisentech.net" class="email-link">
-        ✉ takuya@kisentech.net
-      </a>
-      <div class="social-links">
-        <a href="https://github.com/kisentech" class="social-link icon-only" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <svg class="icon-github-dark" viewBox="0 0 98 96" fill="#ffffff" aria-hidden="true"><path d="M41.4395 69.3848C28.8066 67.8535 19.9062 58.7617 19.9062 46.9902C19.9062 42.2051 21.6289 37.0371 24.5 33.5918C23.2559 30.4336 23.4473 23.7344 24.8828 20.959C28.7109 20.4805 33.8789 22.4902 36.9414 25.2656C40.5781 24.1172 44.4062 23.543 49.0957 23.543C53.7852 23.543 57.6133 24.1172 61.0586 25.1699C64.0254 22.4902 69.2891 20.4805 73.1172 20.959C74.457 23.543 74.6484 30.2422 73.4043 33.4961C76.4668 37.1328 78.0937 42.0137 78.0937 46.9902C78.0937 58.7617 69.1934 67.6621 56.3691 69.2891C59.623 71.3945 61.8242 75.9883 61.8242 81.252L61.8242 91.2051C61.8242 94.0762 64.2168 95.7031 67.0879 94.5547C84.4102 87.9512 98 70.6289 98 49.1914C98 22.1074 75.9883 0 48.9043 0C21.8203 0 0 22.1074 0 49.1914C0 70.4375 13.4941 88.0469 31.6777 94.6504C34.2617 95.6074 36.75 93.8848 36.75 91.3008L36.75 83.6445C35.4102 84.2188 33.6875 84.6016 32.1562 84.6016C25.8398 84.6016 22.1074 81.1563 19.4277 74.7441C18.375 72.1602 17.2266 70.6289 15.0254 70.3418C13.877 70.2461 13.4941 69.7676 13.4941 69.1934C13.4941 68.0449 15.4082 67.1836 17.3223 67.1836C20.0977 67.1836 22.4902 68.9063 24.9785 72.4473C26.8926 75.2227 28.9023 76.4668 31.2949 76.4668C33.6875 76.4668 35.2187 75.6055 37.4199 73.4043C39.0469 71.7773 40.291 70.3418 41.4395 69.3848Z"/></svg>
-          <svg class="icon-github-light" viewBox="0 0 98 96" fill="#000000" aria-hidden="true"><path d="M41.4395 69.3848C28.8066 67.8535 19.9062 58.7617 19.9062 46.9902C19.9062 42.2051 21.6289 37.0371 24.5 33.5918C23.2559 30.4336 23.4473 23.7344 24.8828 20.959C28.7109 20.4805 33.8789 22.4902 36.9414 25.2656C40.5781 24.1172 44.4062 23.543 49.0957 23.543C53.7852 23.543 57.6133 24.1172 61.0586 25.1699C64.0254 22.4902 69.2891 20.4805 73.1172 20.959C74.457 23.543 74.6484 30.2422 73.4043 33.4961C76.4668 37.1328 78.0937 42.0137 78.0937 46.9902C78.0937 58.7617 69.1934 67.6621 56.3691 69.2891C59.623 71.3945 61.8242 75.9883 61.8242 81.252L61.8242 91.2051C61.8242 94.0762 64.2168 95.7031 67.0879 94.5547C84.4102 87.9512 98 70.6289 98 49.1914C98 22.1074 75.9883 0 48.9043 0C21.8203 0 0 22.1074 0 49.1914C0 70.4375 13.4941 88.0469 31.6777 94.6504C34.2617 95.6074 36.75 93.8848 36.75 91.3008L36.75 83.6445C35.4102 84.2188 33.6875 84.6016 32.1562 84.6016C25.8398 84.6016 22.1074 81.1563 19.4277 74.7441C18.375 72.1602 17.2266 70.6289 15.0254 70.3418C13.877 70.2461 13.4941 69.7676 13.4941 69.1934C13.4941 68.0449 15.4082 67.1836 17.3223 67.1836C20.0977 67.1836 22.4902 68.9063 24.9785 72.4473C26.8926 75.2227 28.9023 76.4668 31.2949 76.4668C33.6875 76.4668 35.2187 75.6055 37.4199 73.4043C39.0469 71.7773 40.291 70.3418 41.4395 69.3848Z"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/%E6%8B%93%E4%B9%9F-%E6%B0%97%E4%BB%99-1239a0411/" class="social-link icon-only" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <svg class="icon-linkedin-dark" viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <svg class="icon-linkedin-light" viewBox="0 0 24 24" fill="#0A66C2" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-        <a href="https://www.lancers.jp/profile/tkisen" class="social-link icon-only" target="_blank" rel="noopener noreferrer">
-          <img src="https://s3.ap-northeast-1.amazonaws.com/wp.lancers.jp/c/wp-content/uploads/2025/01/17115345/logo_9038.png" alt="クラウドソーシング「ランサーズ」" width="90" height="38" />
-        </a>
-      </div>
-    </div>
-  </div>
-
   <!-- Footer -->
   <footer>
+    <p class="footer-message">お気軽にご連絡ください。</p>
+    <a href="mailto:takuya@kisentech.net" class="email-link">
+      takuya@kisentech.net
+    </a>
     <p>&copy; 2026 kisentech. All rights reserved.</p>
   </footer>
 
