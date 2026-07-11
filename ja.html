@@ -344,6 +344,33 @@
     [data-theme="light"] .theme-toggle .icon-sun { display: none; }
     [data-theme="light"] .theme-toggle .icon-moon { display: block; }
 
+    .lang-switch {
+      position: fixed;
+      top: 1.25rem;
+      left: 1.25rem;
+      z-index: 50;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+      height: 40px;
+      padding: 0 1rem;
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      text-decoration: none;
+      transition: border-color .2s, transform .15s, background-color .25s, color .25s;
+    }
+
+    .lang-switch:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
     /* ── Light theme ── */
     [data-theme="light"] {
       --bg: #f5f7fa;
@@ -367,6 +394,8 @@
   </style>
 </head>
 <body>
+
+  <a href="index.html" class="lang-switch" aria-label="Switch to English">EN</a>
 
   <button id="themeToggle" class="theme-toggle" type="button" aria-label="ライトモードとダークモードを切り替え">
     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -427,7 +456,7 @@
               <span class="tag">AEM as a Cloud Service</span>
               <span class="tag">Java</span>
               <span class="tag">HTML</span>
-              <span class="tag">css, SCSS, LESS</span>
+              <span class="tag">CSS, SCSS, LESS</span>
               <span class="tag">JavaScript</span>
               <span class="tag">TypeScript</span>
               <span class="tag">AWS</span>

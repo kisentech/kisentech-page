@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}());</script>
+  <script>(function(){var t=localStorage.getItem('theme');var d=t||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',d);}());</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>kisentech — CMS & Software Development</title>
   <link rel="icon" type="image/svg+xml" href="kisentech-logo.svg" />
@@ -18,6 +18,7 @@
       --text: #e2e8f0;
       --muted: #8892a4;
       --radius: 12px;
+      color-scheme: dark;
     }
 
     html { scroll-behavior: smooth; }
@@ -26,7 +27,7 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     /* ── Nav ── */
@@ -43,89 +44,44 @@
       overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(91,141,238,.15) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(167,139,250,.1) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .hero-logo {
+    .hero-name {
       margin-bottom: 2.5rem;
-    }
-
-    .hero-logo span {
-      font-size: 2.8rem;
+      font-size: clamp(2rem, 8vw, 2.8rem);
       font-weight: 700;
       letter-spacing: .05em;
       color: var(--text);
       opacity: .92;
     }
 
-    .badge {
-      display: inline-block;
-      padding: .35rem .9rem;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      font-size: .78rem;
+    .hero-role {
       color: var(--muted);
+      font-size: 1.05rem;
       margin-bottom: 1.5rem;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.4rem, 6vw, 4rem);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-      max-width: 720px;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
     .hero p {
       margin-top: 1.5rem;
       color: var(--muted);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       max-width: 520px;
     }
 
-    .cta-row {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
+    .hero-business-name {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      margin-top: 1.5rem;
+      color: var(--muted);
+      font-size: 1.05rem;
     }
 
-    .btn {
-      padding: .75rem 1.75rem;
-      border-radius: var(--radius);
-      font-size: .95rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: opacity .2s, transform .15s;
-    }
-
-    .btn:hover { opacity: .85; transform: translateY(-1px); }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff;
-      border: none;
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
+    .hero-business-name svg {
+      height: 1em;
+      width: auto;
+      aspect-ratio: 282.43 / 43.78;
+      overflow: visible;
+      fill: var(--muted);
+      vertical-align: middle;
     }
 
     /* ── Section wrapper ── */
@@ -136,7 +92,7 @@
     }
 
     .section-label {
-      font-size: .8rem;
+      font-size: .75rem;
       font-weight: 600;
       letter-spacing: .1em;
       text-transform: uppercase;
@@ -157,54 +113,7 @@
       margin-bottom: 3rem;
     }
 
-    /* ── Services grid ── */
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 2rem;
-      transition: border-color .2s, transform .2s;
-    }
-
-    .card:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-    }
-
-    .card-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .card h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-    }
-
-    .card p {
-      font-size: .9rem;
-      color: var(--muted);
-    }
-
-    /* ── Tech stack ── */
-    #stack { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-
-    #stack > section {
-      max-width: 1100px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .75rem;
-    }
+    .tags { display: flex; flex-wrap: wrap; gap: .75rem; }
 
     .tag {
       padding: .4rem 1rem;
@@ -213,24 +122,6 @@
       font-size: .85rem;
       color: var(--muted);
       background: var(--bg);
-    }
-
-    .skill-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: .45rem;
-      border-color: var(--accent);
-      color: var(--text);
-    }
-
-    .skill-yrs {
-      font-size: .72rem;
-      font-weight: 700;
-      padding: .1rem .45rem;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff;
-      line-height: 1.4;
     }
 
     /* ── Experience ── */
@@ -256,8 +147,8 @@
       padding-top: .2rem;
     }
 
-    .timeline-content h3 {
-      font-size: 1.05rem;
+    .timeline-content h4 {
+      font-size: 1rem;
       font-weight: 700;
       margin-bottom: .3rem;
     }
@@ -277,97 +168,207 @@
       margin-bottom: 1rem;
     }
 
+    .timeline-content ul.desc-list {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-bottom: 1rem;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .timeline-content ul.desc-list li {
+      margin-bottom: .3rem;
+      padding-left: 1.3rem;
+      position: relative;
+    }
+
+    .timeline-content ul.desc-list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+
+    .timeline-content ul.desc-list li:last-child {
+      margin-bottom: 0;
+    }
+
     .timeline-content .tags .tag {
       font-size: .78rem;
       padding: .3rem .8rem;
     }
 
-    /* ── Process ── */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      counter-reset: step;
+    .timeline-group + .timeline-group {
+      margin-top: 3rem;
     }
 
-    .step {
-      counter-increment: step;
-      position: relative;
-      padding: 1.75rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-    }
-
-    .step::before {
-      content: counter(step, decimal-leading-zero);
-      display: block;
-      font-size: .75rem;
+    .timeline-group-title {
+      font-size: 1.15rem;
       font-weight: 700;
-      color: var(--accent);
-      margin-bottom: .75rem;
-      letter-spacing: .05em;
-    }
-
-    .step h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: .4rem;
-    }
-
-    .step p {
-      font-size: .875rem;
-      color: var(--muted);
+      color: var(--text);
+      padding-bottom: .75rem;
+      margin-bottom: 0;
+      border-bottom: 1px solid var(--border);
     }
 
     /* ── Contact ── */
-    #contact-wrapper {
-      background: linear-gradient(135deg, rgba(91,141,238,.08), rgba(167,139,250,.08));
-      border-top: 1px solid var(--border);
-    }
-
-    .contact-box {
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 6rem 2rem;
-    }
-
-    .contact-box h2 { margin-bottom: 1rem; }
-
-    .contact-box p {
-      color: var(--muted);
-      margin-bottom: 2rem;
-    }
-
     .email-link {
+      display: inline-block;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
+    .email-link:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .email-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: .75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .social-link {
       display: inline-flex;
       align-items: center;
       gap: .5rem;
-      padding: .85rem 2rem;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff;
+      padding: .6rem 1.4rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text);
+      font-size: .9rem;
       font-weight: 600;
-      border-radius: var(--radius);
       text-decoration: none;
-      font-size: 1rem;
-      transition: opacity .2s, transform .15s;
+      transition: border-color .2s, transform .15s;
     }
 
-    .email-link:hover { opacity: .85; transform: translateY(-1px); }
+    .social-link .icon-linkedin-dark,
+    .social-link .icon-linkedin-light,
+    .social-link .icon-github-dark,
+    .social-link .icon-github-light {
+      height: 25px;
+      width: auto;
+      flex-shrink: 0;
+    }
+
+    .social-link.icon-only {
+      padding: 0;
+      border: none;
+      transition: none;
+    }
+
+    .social-link.icon-only:hover {
+      border-color: transparent;
+      transform: none;
+    }
+
+    .social-link .icon-linkedin-light { display: none; }
+    [data-theme="light"] .social-link .icon-linkedin-dark { display: none; }
+    [data-theme="light"] .social-link .icon-linkedin-light { display: block; }
+
+    .social-link .icon-github-light { display: none; }
+    [data-theme="light"] .social-link .icon-github-dark { display: none; }
+    [data-theme="light"] .social-link .icon-github-light { display: block; }
+
+    .social-link:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
 
     /* ── Footer ── */
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: 4rem 2rem 2.5rem;
       border-top: 1px solid var(--border);
       color: var(--muted);
       font-size: .85rem;
     }
 
+    .footer-message {
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    footer .email-link {
+      margin-bottom: 2.5rem;
+    }
+
     /* ── Theme toggle ── */
-    body, .card, .step {
+    body {
       transition: background-color .25s, color .25s, border-color .25s;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1.25rem;
+      right: 1.25rem;
+      z-index: 50;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: border-color .2s, transform .15s, background-color .25s, color .25s;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .theme-toggle .icon-moon { display: none; }
+
+    [data-theme="light"] .theme-toggle .icon-sun { display: none; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+    .lang-switch {
+      position: fixed;
+      top: 1.25rem;
+      left: 1.25rem;
+      z-index: 50;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+      height: 40px;
+      padding: 0 1rem;
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      text-decoration: none;
+      transition: border-color .2s, transform .15s, background-color .25s, color .25s;
+    }
+
+    .lang-switch:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
     }
 
     /* ── Light theme ── */
@@ -379,23 +380,12 @@
       --muted: #5a6478;
       --accent: #3b6fd4;
       --accent2: #7c5ce8;
+      color-scheme: light;
     }
 
-
-    [data-theme="light"] .hero::before {
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,111,212,.1) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(124,92,232,.06) 0%, transparent 60%);
-    }
-
-    [data-theme="light"] #contact-wrapper {
-      background: linear-gradient(135deg, rgba(59,111,212,.06), rgba(124,92,232,.06));
-    }
 
     /* ── Responsive ── */
     @media (max-width: 640px) {
-      .hero h1 { font-size: 2rem; }
-
       .timeline-item {
         grid-template-columns: 1fr;
         gap: .5rem;
@@ -405,177 +395,151 @@
 </head>
 <body>
 
+  <a href="ja.html" class="lang-switch" aria-label="日本語に切り替え">JA</a>
+
+  <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle light and dark mode">
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </button>
+
   <!-- Hero -->
   <div class="hero">
-    <div class="hero-logo">
-      <span>気仙 拓也</span>
-    </div>
-    <span class="badge">Sole Proprietor · Software Developer</span>
-    <h1>CMS Development<br />Built to <span>Scale & Last</span></h1>
-    <p>kisentech delivers custom CMS solutions and tailored software for businesses that need reliable, maintainable, and performant digital foundations.</p>
-    <div class="cta-row">
-      <a href="#contact" class="btn btn-primary">Get in Touch</a>
-      <a href="#services" class="btn btn-outline">See Services</a>
-    </div>
-  </div>
-
-  <!-- Services -->
-  <section id="services">
-    <div class="section-label">What I Do</div>
-    <h2>Services</h2>
-    <p class="sub">From initial architecture through deployment and ongoing support — end-to-end software development focused on content management.</p>
-    <div class="grid-3">
-      <div class="card">
-        <div class="card-icon">🗂️</div>
-        <h3>Custom CMS Development</h3>
-        <p>Tailor-made content management systems built around your editorial workflow, not a one-size-fits-all template.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🔌</div>
-        <h3>CMS Integration</h3>
-        <p>Connect headless CMS platforms (WordPress, Contentful, Strapi, Sanity) with your existing services and front-end stack.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🌐</div>
-        <h3>Web Application Development</h3>
-        <p>Full-stack web apps — from REST/GraphQL APIs to responsive front-ends — designed for maintainability.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">⚙️</div>
-        <h3>Workflow Automation</h3>
-        <p>Automate content publishing, media handling, and approval pipelines to keep your team moving faster.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🔒</div>
-        <h3>Security & Performance</h3>
-        <p>Code reviews, dependency audits, caching strategies, and hardening to keep your site fast and secure.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🛠️</div>
-        <h3>Maintenance & Support</h3>
-        <p>Ongoing updates, bug fixes, and feature additions — a single point of contact who knows your codebase.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stack -->
-  <div id="stack">
-    <section>
-      <div class="section-label">Technologies</div>
-      <h2>Preferred Stack</h2>
-      <p class="sub">Tools chosen for longevity, ecosystem health, and practical developer experience.</p>
-      <div class="tags">
-        <span class="tag skill-tag">C# <span class="skill-yrs">2+ yrs</span></span>
-        <span class="tag">WordPress</span>
-        <span class="tag">Strapi</span>
-        <span class="tag">Contentful</span>
-        <span class="tag">Sanity</span>
-        <span class="tag">Next.js</span>
-        <span class="tag">React</span>
-        <span class="tag skill-tag">TypeScript <span class="skill-yrs">3+ yrs</span></span>
-        <span class="tag">Node.js</span>
-        <span class="tag skill-tag">PHP <span class="skill-yrs">5+ yrs</span></span>
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">MySQL</span>
-        <span class="tag">REST API</span>
-        <span class="tag">GraphQL</span>
-        <span class="tag">Docker</span>
-        <span class="tag">Vercel</span>
-        <span class="tag">AWS</span>
-        <span class="tag">Git / GitHub</span>
-      </div>
-    </section>
-  </div>
-
-  <!-- Experience -->
-  <section id="experience">
-    <div class="section-label">Career</div>
-    <h2>Experience</h2>
-    <p class="sub">A placeholder timeline — swap in your real roles, dates, and clients.</p>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-year">2023 — PRESENT</div>
-        <div class="timeline-content">
-          <h3>Founder & Software Developer · <span class="timeline-org">kisentech</span></h3>
-          <p class="desc">Run an independent practice building custom CMS platforms and web applications for small and medium businesses, owning everything from discovery through deployment and long-term support.</p>
-          <div class="tags">
-            <span class="tag">PHP</span>
-            <span class="tag">WordPress</span>
-            <span class="tag">Next.js</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">PostgreSQL</span>
-          </div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2020 — 2023</div>
-        <div class="timeline-content">
-          <h3>Software Engineer · <span class="timeline-org">[Company Name]</span></h3>
-          <span class="timeline-role">Junior Engineer</span>
-          <p class="desc">Developed and maintained CMS-driven web applications for enterprise clients, collaborating with designers and product managers to ship features on a regular release cycle.</p>
-          <div class="tags">
-            <span class="tag">PHP</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">JavaScript</span>
-          </div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2018 — 2020</div>
-        <div class="timeline-content">
-          <h3>Junior Developer · <span class="timeline-org">[Company Name]</span></h3>
-          <p class="desc">Built and styled marketing sites and internal tools, learning the fundamentals of CMS architecture and front-end development.</p>
-          <div class="tags">
-            <span class="tag">HTML & SCSS</span>
-            <span class="tag">PHP</span>
-            <span class="tag">WordPress</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Process -->
-  <section id="process">
-    <div class="section-label">How It Works</div>
-    <h2>Development Process</h2>
-    <p class="sub">A straightforward engagement model — no surprises, clear milestones, and regular communication throughout.</p>
-    <div class="steps">
-      <div class="step">
-        <h3>Discovery</h3>
-        <p>Understand your goals, content model, existing systems, and team workflows before writing a line of code.</p>
-      </div>
-      <div class="step">
-        <h3>Proposal</h3>
-        <p>Deliver a written scope, technology recommendation, timeline, and fixed or time-and-materials estimate.</p>
-      </div>
-      <div class="step">
-        <h3>Build</h3>
-        <p>Iterative development with frequent check-ins, staging environment access, and transparent progress updates.</p>
-      </div>
-      <div class="step">
-        <h3>Handoff</h3>
-        <p>Production deployment, documentation, team training, and an optional ongoing support arrangement.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <div id="contact-wrapper">
-    <div class="contact-box" id="contact">
-      <div class="section-label">Get in Touch</div>
-      <h2>Ready to Start?</h2>
-      <p>Tell me about your project — I respond within one business day and offer a free initial consultation.</p>
-      <a href="mailto:tkisen@outlook.jp" class="email-link">
-        ✉ tkisen@outlook.jp
+    <h1 class="hero-name">Takuya Kisen</h1>
+    <span class="hero-role">CMS & Software Engineer</span>
+    <p>An engineer based in Hakodate, Hokkaido, Japan.</p>
+    <p class="hero-business-name">Doing business as<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 282.43 43.78" width="282.43" height="43.78" aria-label="kisentech"><path d="M0,0h7.51v25.44h5.95l5.45-9.19h8.93l-8.33,12.96,9.43,14.02h-8.93l-6.7-10.68h-5.81v10.68H0V0Z"/><path d="M42.29,23.35h-10.39v-7.1h17.91v19.87h10.39v7.1h-17.91v-19.87ZM46.75.02h7.58v12.02h-7.58V.02Z"/><path d="M63.89,34.08h8.23c.36,2.4,2.42,3.5,5.5,3.5,2.3,0,4.2-.79,4.2-2.38,0-1.37-1.49-1.85-2.83-2.06l-5.45-.89c-5.35-.86-8.5-3.89-8.5-8.11,0-5.16,4.75-8.54,11.54-8.54s12.02,3.29,12.43,8.95h-8.23c-.24-1.82-2.18-2.76-4.39-2.76s-3.7.89-3.7,2.18c0,.98.89,1.73,2.81,2.06l5.45.96c5.71,1.01,8.54,3.77,8.54,7.85,0,5.4-4.82,8.93-11.98,8.93-7.56,0-13.3-3.62-13.63-9.7Z"/><path d="M93.21,29.95c0-8.64,6.34-14.35,14.52-14.35,8.62,0,14.09,6.19,14.09,14.38v1.94h-21.36c.77,3.38,3.43,5.35,7.27,5.35,2.83,0,5.04-1.08,5.71-3.1h8.23c-1.82,6.29-7.06,9.6-13.85,9.6-8.88,0-14.62-5.66-14.62-13.83ZM100.7,26.83h13.9c-1.01-2.9-3.31-4.73-6.91-4.73s-5.98,1.78-6.98,4.73Z"/><path d="M126.07,16.25h7.51v3.14c1.42-2.45,4.58-3.74,8.42-3.74,7.25,0,11.76,4.32,11.76,11.09v16.49h-7.51v-14.5c0-3.72-2.06-5.95-5.95-5.95-3.48,0-6.46,1.87-6.72,6.29v14.16h-7.51v-26.98Z"/><path d="M168.43,23.35h-10.39v-7.1h10.39V1.37h7.51v14.88h10.39v7.1h-10.39v19.87h-7.51v-19.87Z"/><path d="M189.98,29.95c0-8.64,6.34-14.35,14.52-14.35,8.62,0,14.09,6.19,14.09,14.38v1.94h-21.36c.77,3.38,3.43,5.35,7.27,5.35,2.83,0,5.04-1.08,5.71-3.1h8.23c-1.82,6.29-7.06,9.6-13.85,9.6-8.88,0-14.62-5.66-14.62-13.83ZM197.46,26.83h13.9c-1.01-2.9-3.31-4.73-6.91-4.73s-5.98,1.78-6.99,4.73Z"/><path d="M222.21,29.71c0-8.3,5.86-14.09,14.35-14.09,7.56,0,13.08,4.56,13.92,11.35h-8.26c-.65-2.64-2.81-4.25-5.66-4.25-4.08,0-6.79,2.76-6.79,6.98s2.71,6.98,6.79,6.98c2.86,0,5.04-1.66,5.69-4.37h8.23c-.82,6.84-6.31,11.45-13.92,11.45-8.5,0-14.35-5.81-14.35-14.07Z"/><path d="M254.73,0h7.51v19.39c1.42-2.45,4.58-3.74,8.42-3.74,7.22,0,11.76,4.34,11.76,11.09v16.49h-7.51v-14.5c0-3.72-2.06-5.95-5.95-5.95-3.48,0-6.46,1.87-6.72,6.29v14.16h-7.51V0Z"/></svg></p>
+    <div class="social-links">
+      <a href="https://github.com/kisentech" class="social-link icon-only" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <img class="icon-github-dark" src="GitHub_Invertocat_White.svg" alt="" aria-hidden="true" />
+        <img class="icon-github-light" src="GitHub_Invertocat_Black.svg" alt="" aria-hidden="true" />
+      </a>
+      <a href="https://www.linkedin.com/in/%E6%8B%93%E4%B9%9F-%E6%B0%97%E4%BB%99-1239a0411/" class="social-link icon-only" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <img class="icon-linkedin-dark" src="InBug-White.png" alt="" aria-hidden="true" />
+        <img class="icon-linkedin-light" src="LI-In-Bug.png" alt="" aria-hidden="true" />
+      </a>
+      <a href="https://www.lancers.jp/profile/tkisen" class="social-link icon-only" target="_blank" rel="noopener noreferrer">
+        <img src="https://s3.ap-northeast-1.amazonaws.com/wp.lancers.jp/c/wp-content/uploads/2025/01/17115345/logo_9038.png" alt="Lancers freelance platform" width="90" height="38" />
       </a>
     </div>
   </div>
 
+  <!-- Experience -->
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="timeline">
+      
+      <div class="timeline-item">
+        <div class="timeline-year">2025 — Present</div>
+        <div class="timeline-content">
+          <h4>Contract Adobe Experience Manager (AEM) Developer</h4>
+          <p class="desc" style="margin-top: 0.2rem; margin-bottom: 0.8rem; font-style: italic; color: var(--muted); font-size: 0.9rem;">
+            Providing dedicated, long-term engineering support for a select portfolio of clients under continuous contracts.
+          </p>
+          <ul class="desc-list">
+            <li>Full-stack development (frontend & backend) including custom components, templates, and workflows</li>
+            <li>Migration from AEM Managed Service to AEM as a Cloud Service</li>
+            <li>AEM content authoring and marketing support</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">AEM On-premise</span>
+            <span class="tag">AEM Managed Service</span>
+            <span class="tag">AEM as a Cloud Service</span>
+            <span class="tag">Java</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS, SCSS, LESS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">AWS</span>
+            <span class="tag">Claude Code</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2019 — 2024</div>
+        <div class="timeline-content">
+          <h4>Adobe Experience Manager (AEM) Developer</h4>
+          <ul class="desc-list">
+            <li>Deployment and configuration of AEM environments</li>
+            <li>Full-stack development (frontend & backend) including custom components, templates, and workflows</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">AEM On-premise</span>
+            <span class="tag">AEM Dispatcher</span>
+            <span class="tag">Java</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">React</span>
+            <span class="tag">SQL</span>
+            <span class="tag">GraphQL</span>
+            <span class="tag">Apache httpd</span>
+            <span class="tag">Linux</span>
+            <span class="tag">AWS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2014 — 2019</div>
+        <div class="timeline-content">
+          <h4>Banking Systems Developer</h4>
+          <ul class="desc-list">
+            <li>Development of core banking and internal operational systems</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">C#</span>
+            <span class="tag">C++</span>
+            <span class="tag">Visual Basic</span>
+            <span class="tag">Java</span>
+            <span class="tag">Cobol</span>
+            <span class="tag">.NET Framework</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
+    <p class="footer-message">Feel free to reach out.</p>
+    <a href="mailto:takuya@kisentech.net" class="email-link">
+      takuya@kisentech.net
+    </a>
     <p>&copy; 2026 kisentech. All rights reserved.</p>
   </footer>
 
+  <script>
+    (function () {
+      var toggle = document.getElementById('themeToggle');
+      var mql = window.matchMedia('(prefers-color-scheme: dark)');
+
+      toggle.addEventListener('click', function () {
+        var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', next);
+        document.documentElement.setAttribute('data-theme', next);
+      });
+
+      mql.addEventListener('change', function (e) {
+        if (!localStorage.getItem('theme')) {
+          document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        }
+      });
+    }());
+  </script>
 </body>
 </html>
