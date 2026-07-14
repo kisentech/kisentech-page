@@ -1,0 +1,9 @@
+// Cloudflare Workers config — static-assets-only deployment.
+// "name" must match the Worker name in the Cloudflare dashboard.
+{
+  "name": "kisentech-page",
+  "compatibility_date": "2026-07-14",
+  "assets": {
+    "directory": "./"
+  }
+}
