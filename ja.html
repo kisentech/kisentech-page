@@ -10,13 +10,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0f1117;
+      --bg: #0a1026;
       --surface: #1a1d27;
       --border: #666c80;
       --accent: #5b8dee;
       --accent2: #a78bfa;
       --text: #e2e8f0;
       --muted: #8892a4;
+      --hero-footer-bg: #0a1026;
+      --experience-bg: #090e21;
       --radius: 12px;
       color-scheme: dark;
     }
@@ -40,6 +42,7 @@
       align-items: center;
       text-align: center;
       padding: 4rem 2rem;
+      background: var(--hero-footer-bg);
       position: relative;
       overflow: hidden;
     }
@@ -125,6 +128,12 @@
     }
 
     /* ── Experience ── */
+    #experience {
+      background: var(--experience-bg);
+      box-shadow: 0 0 0 100vmax var(--experience-bg);
+      clip-path: inset(0 -100vmax);
+    }
+
     .timeline-item {
       display: grid;
       grid-template-columns: 140px 1fr;
@@ -290,9 +299,9 @@
     footer {
       text-align: center;
       padding: 4rem 2rem 2.5rem;
-      border-top: 1px solid var(--border);
       color: var(--muted);
       font-size: .85rem;
+      background: var(--hero-footer-bg);
     }
 
     .footer-message {
@@ -373,14 +382,20 @@
 
     /* ── Light theme ── */
     [data-theme="light"] {
-      --bg: #f5f7fa;
+      --bg: #ffffff;
       --surface: #ffffff;
       --border: #7a86a0;
       --text: #1a1d27;
       --muted: #5a6478;
       --accent: #3b6fd4;
       --accent2: #7c5ce8;
+      --hero-footer-bg: #f5f5f7;
+      --experience-bg: #edeef2;
       color-scheme: light;
+    }
+
+    [data-theme="light"] #experience {
+      --muted: #2a2c3f;
     }
 
 
@@ -395,7 +410,7 @@
 </head>
 <body>
 
-  <a href="index.html" class="lang-switch" aria-label="Switch to English">EN</a>
+  <a href="index.html" class="lang-switch" lang="en" aria-label="Switch to English">EN</a>
 
   <button id="themeToggle" class="theme-toggle" type="button" aria-label="ライトモードとダークモードを切り替え" aria-pressed="true">
     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
