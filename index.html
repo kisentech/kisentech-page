@@ -5,18 +5,94 @@
   <script>(function(){var t=localStorage.getItem('theme');var d=t||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',d);}());</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>kisentech — CMS & Software Development</title>
-  <link rel="icon" type="image/svg+xml" href="kisentech-logo.svg">
+  <meta name="description" content="kisentech — CMS and software development services by Takuya Kisen, an engineer based in Hakodate, Hokkaido, Japan.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="kisentech — CMS & Software Development">
+  <meta property="og:description" content="kisentech — CMS and software development services by Takuya Kisen, an engineer based in Hakodate, Hokkaido, Japan.">
+  <meta property="og:url" content="https://kisentech.net/">
+  <meta property="og:image" content="https://kisentech.net/kisentech-icon.png">
+  <meta property="og:image:width" content="400">
+  <meta property="og:image:height" content="400">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="kisentech — CMS & Software Development">
+  <meta name="twitter:description" content="kisentech — CMS and software development services by Takuya Kisen, an engineer based in Hakodate, Hokkaido, Japan.">
+  <meta name="twitter:image" content="https://kisentech.net/kisentech-icon.png">
+  <link rel="canonical" href="https://kisentech.net/">
+  <link rel="alternate" hreflang="en" href="https://kisentech.net/">
+  <link rel="alternate" hreflang="ja" href="https://kisentech.net/ja">
+  <link rel="alternate" hreflang="x-default" href="https://kisentech.net/">
+  <link rel="icon" type="image/svg+xml" href="kisentech-icon.svg">
+  <link rel="icon" type="image/png" href="kisentech-icon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://kisentech.net/#takuya-kisen",
+        "name": "Takuya Kisen",
+        "alternateName": "気仙 拓也",
+        "jobTitle": "CMS & Software Engineer",
+        "url": "https://kisentech.net/",
+        "email": "mailto:takuya@kisentech.net",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Hakodate",
+          "addressRegion": "Hokkaido",
+          "addressCountry": "JP"
+        },
+        "knowsAbout": [
+          "Adobe Experience Manager",
+          "Java",
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "SQL",
+          "GraphQL",
+          "AWS",
+          "Linux"
+        ],
+        "sameAs": [
+          "https://github.com/kisentech",
+          "https://www.linkedin.com/in/%E6%8B%93%E4%B9%9F-%E6%B0%97%E4%BB%99-1239a0411/",
+          "https://www.lancers.jp/profile/tkisen"
+        ],
+        "worksFor": { "@id": "https://kisentech.net/#kisentech" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://kisentech.net/#kisentech",
+        "name": "kisentech",
+        "url": "https://kisentech.net/",
+        "logo": "https://kisentech.net/kisentech-icon.png",
+        "email": "mailto:takuya@kisentech.net",
+        "founder": { "@id": "https://kisentech.net/#takuya-kisen" },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Hakodate",
+          "addressRegion": "Hokkaido",
+          "addressCountry": "JP"
+        },
+        "sameAs": [
+          "https://github.com/kisentech"
+        ]
+      }
+    ]
+  }
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0f1117;
+      --bg: #0a1026;
       --surface: #1a1d27;
       --border: #666c80;
       --accent: #5b8dee;
       --accent2: #a78bfa;
       --text: #e2e8f0;
       --muted: #8892a4;
+      --hero-footer-bg: #0a1026;
+      --experience-bg: #090e21;
       --radius: 12px;
       color-scheme: dark;
     }
@@ -40,6 +116,7 @@
       align-items: center;
       text-align: center;
       padding: 4rem 2rem;
+      background: var(--hero-footer-bg);
       position: relative;
       overflow: hidden;
     }
@@ -125,6 +202,12 @@
     }
 
     /* ── Experience ── */
+    #experience {
+      background: var(--experience-bg);
+      box-shadow: 0 0 0 100vmax var(--experience-bg);
+      clip-path: inset(0 -100vmax);
+    }
+
     .timeline-item {
       display: grid;
       grid-template-columns: 140px 1fr;
@@ -290,9 +373,9 @@
     footer {
       text-align: center;
       padding: 4rem 2rem 2.5rem;
-      border-top: 1px solid var(--border);
       color: var(--muted);
       font-size: .85rem;
+      background: var(--hero-footer-bg);
     }
 
     .footer-message {
@@ -373,14 +456,20 @@
 
     /* ── Light theme ── */
     [data-theme="light"] {
-      --bg: #f5f7fa;
+      --bg: #ffffff;
       --surface: #ffffff;
       --border: #7a86a0;
       --text: #1a1d27;
       --muted: #5a6478;
       --accent: #3b6fd4;
       --accent2: #7c5ce8;
+      --hero-footer-bg: #f5f5f7;
+      --experience-bg: #edeef2;
       color-scheme: light;
+    }
+
+    [data-theme="light"] #experience {
+      --muted: #2a2c3f;
     }
 
 
@@ -395,7 +484,7 @@
 </head>
 <body>
 
-  <a href="ja.html" class="lang-switch" aria-label="JA - 日本語に切り替え">JA</a>
+  <a href="/ja" class="lang-switch" lang="ja" aria-label="JA - 日本語に切り替え">JA</a>
 
   <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle light and dark mode" aria-pressed="true">
     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -413,6 +502,8 @@
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
     </svg>
   </button>
+
+  <main>
 
   <!-- Hero -->
   <div class="hero">
@@ -513,6 +604,8 @@
 
     </div>
   </section>
+
+  </main>
 
   <!-- Footer -->
   <footer>

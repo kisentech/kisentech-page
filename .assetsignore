@@ -1,0 +1,7 @@
+CLAUDE.md
+README.md
+.claude/
+.gitignore
+.assetsignore
+wrangler.jsonc
+.DS_Store
