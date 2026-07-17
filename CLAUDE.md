@@ -63,5 +63,5 @@ Logo appears twice per page: small in the nav (`.logo svg`, 22px) and large in t
 - No URL-based routing — just two separate files
 
 ## Key contact info
-- Owner email: `tkisen@outlook.jp` (used in the mailto CTA on both pages)
+- Owner email: `takuya@kisentech.net` (used in the mailto CTA on both pages)
 - Copyright year: 2026
