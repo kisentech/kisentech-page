@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Favicon derivative of the kisentech "k." mark.
+     viewBox crops to the mark (bounds x 109.9-290.1, y 100-300) with a ~10% margin
+     instead of the 400x400 export frame, so it stays legible at 16px.
+     Fill follows the browser chrome's theme, not the site's data-theme toggle. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="75 75 250 250">
+  <style>
+    .mark { fill: #231815; }
+    @media (prefers-color-scheme: dark) {
+      .mark { fill: #ffffff; }
+    }
+  </style>
+  <path class="mark" d="M109.9,100h34.3v116.2h27.2l24.9-42h40.8l-38.1,59.2,43.1,64h-40.8l-30.6-48.8h-26.5v48.8h-34.3V100Z"/>
+  <rect class="mark" x="264.1" y="274" width="26" height="26"/>
+</svg>
