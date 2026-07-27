@@ -4,5 +4,8 @@
 .wrangler
 .dev.vars*
 !.dev.vars.example
+
+# other
 .env*
 !.env.example
+.aider*

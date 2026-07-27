@@ -4,19 +4,111 @@
   <meta charset="UTF-8">
   <script>(function(){var t=localStorage.getItem('theme');var d=t||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',d);}());</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>kisentech — CMS・ソフトウェア開発</title>
-  <link rel="icon" type="image/svg+xml" href="kisentech-logo.svg">
+  <title>kisentech — CMS・ソフトウェア開発 | 気仙拓也</title>
+  <meta name="description" content="kisentech — 北海道函館市を拠点とするエンジニア、気仙拓也によるCMS・ソフトウェア開発サービス。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="kisentech">
+  <meta property="og:title" content="kisentech — CMS・ソフトウェア開発 | 気仙拓也">
+  <meta property="og:description" content="kisentech — 北海道函館市を拠点とするエンジニア、気仙拓也によるCMS・ソフトウェア開発サービス。">
+  <meta property="og:url" content="https://kisentech.net/ja">
+  <meta property="og:image" content="https://kisentech.net/kisentech-icon.png">
+  <meta property="og:image:width" content="400">
+  <meta property="og:image:height" content="400">
+  <meta property="og:image:alt" content="kisentechのロゴ">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="kisentech — CMS・ソフトウェア開発 | 気仙拓也">
+  <meta name="twitter:description" content="kisentech — 北海道函館市を拠点とするエンジニア、気仙拓也によるCMS・ソフトウェア開発サービス。">
+  <meta name="twitter:image" content="https://kisentech.net/kisentech-icon.png">
+  <meta name="twitter:image:alt" content="kisentechのロゴ">
+  <link rel="canonical" href="https://kisentech.net/ja">
+  <link rel="alternate" hreflang="en" href="https://kisentech.net/">
+  <link rel="alternate" hreflang="ja" href="https://kisentech.net/ja">
+  <link rel="alternate" hreflang="x-default" href="https://kisentech.net/">
+  <link rel="icon" type="image/svg+xml" href="kisentech-icon.svg">
+  <link rel="icon" type="image/png" href="kisentech-icon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://kisentech.net/#takuya-kisen",
+        "name": "気仙 拓也",
+        "alternateName": "Takuya Kisen",
+        "jobTitle": "CMSエンジニア、ソフトウェアエンジニア",
+        "url": "https://kisentech.net/ja",
+        "email": "mailto:takuya@kisentech.net",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "函館市",
+          "addressRegion": "北海道",
+          "addressCountry": "JP"
+        },
+        "knowsAbout": [
+          "Adobe Experience Manager",
+          "Java",
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "SQL",
+          "GraphQL",
+          "AWS",
+          "Linux"
+        ],
+        "sameAs": [
+          "https://github.com/kisentech",
+          "https://www.linkedin.com/in/%E6%8B%93%E4%B9%9F-%E6%B0%97%E4%BB%99-1239a0411/",
+          "https://www.lancers.jp/profile/tkisen"
+        ],
+        "worksFor": { "@id": "https://kisentech.net/#kisentech" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://kisentech.net/#kisentech",
+        "name": "kisentech",
+        "url": "https://kisentech.net/",
+        "logo": "https://kisentech.net/kisentech-icon.png",
+        "email": "mailto:takuya@kisentech.net",
+        "founder": { "@id": "https://kisentech.net/#takuya-kisen" },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "函館市",
+          "addressRegion": "北海道",
+          "addressCountry": "JP"
+        },
+        "sameAs": [
+          "https://github.com/kisentech"
+        ]
+      }
+    ]
+  }
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* Text that must reach crawlers and screen readers but not the viewport.
+       Absolute positioning keeps it out of flex layout, so it adds no gap. */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
     :root {
-      --bg: #0f1117;
+      --bg: #0a1026;
       --surface: #1a1d27;
       --border: #666c80;
       --accent: #5b8dee;
       --accent2: #a78bfa;
       --text: #e2e8f0;
       --muted: #8892a4;
+      --hero-footer-bg: #0a1026;
+      --experience-bg: #090e21;
       --radius: 12px;
       color-scheme: dark;
     }
@@ -40,23 +132,33 @@
       align-items: center;
       text-align: center;
       padding: 4rem 2rem;
+      background: var(--hero-footer-bg);
       position: relative;
       overflow: hidden;
     }
 
+    /* The role sits inside the heading so its text names the topic, not just
+       the person. Margins reproduce the old two-element spacing: .hero is a
+       flex column, so these never collapse. */
     .hero-name {
-      margin-bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1.5rem;
       font-size: clamp(2rem, 8vw, 2.8rem);
       font-weight: 700;
       letter-spacing: .05em;
       color: var(--text);
-      opacity: .92;
     }
 
+    .hero-name-text { opacity: .92; }
+
     .hero-role {
+      margin-top: 2.5rem;
       color: var(--muted);
       font-size: 1.05rem;
-      margin-bottom: 1.5rem;
+      font-weight: 400;
+      letter-spacing: normal;
     }
 
     .hero p {
@@ -113,7 +215,7 @@
       margin-bottom: 3rem;
     }
 
-    .tags { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: .75rem; list-style: none; }
 
     .tag {
       padding: .4rem 1rem;
@@ -125,6 +227,12 @@
     }
 
     /* ── Experience ── */
+    #experience {
+      background: var(--experience-bg);
+      box-shadow: 0 0 0 100vmax var(--experience-bg);
+      clip-path: inset(0 -100vmax);
+    }
+
     .timeline-item {
       display: grid;
       grid-template-columns: 140px 1fr;
@@ -290,9 +398,9 @@
     footer {
       text-align: center;
       padding: 4rem 2rem 2.5rem;
-      border-top: 1px solid var(--border);
       color: var(--muted);
       font-size: .85rem;
+      background: var(--hero-footer-bg);
     }
 
     .footer-message {
@@ -373,14 +481,20 @@
 
     /* ── Light theme ── */
     [data-theme="light"] {
-      --bg: #f5f7fa;
+      --bg: #ffffff;
       --surface: #ffffff;
       --border: #7a86a0;
       --text: #1a1d27;
       --muted: #5a6478;
       --accent: #3b6fd4;
       --accent2: #7c5ce8;
+      --hero-footer-bg: #f5f5f7;
+      --experience-bg: #edeef2;
       color-scheme: light;
+    }
+
+    [data-theme="light"] #experience {
+      --muted: #2a2c3f;
     }
 
 
@@ -395,7 +509,7 @@
 </head>
 <body>
 
-  <a href="index.html" class="lang-switch" aria-label="Switch to English">EN</a>
+  <a href="/" class="lang-switch" lang="en" aria-label="Switch to English">EN</a>
 
   <button id="themeToggle" class="theme-toggle" type="button" aria-label="ライトモードとダークモードを切り替え" aria-pressed="true">
     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -414,12 +528,16 @@
     </svg>
   </button>
 
+  <main>
+
   <!-- Hero -->
   <div class="hero">
-    <h1 class="hero-name">気仙 拓也</h1>
-    <span class="hero-role">CMSエンジニア、ソフトウェアエンジニア</span>
+    <h1 class="hero-name">
+      <span class="hero-name-text">気仙 拓也</span>
+      <span class="hero-role">CMSエンジニア、ソフトウェアエンジニア</span>
+    </h1>
     <p>北海道函館市を拠点に活動するエンジニアです。</p>
-    <p class="hero-business-name">ビジネスネームは<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 282.43 43.78" width="282.43" height="43.78" aria-label="kisentech"><path d="M0,0h7.51v25.44h5.95l5.45-9.19h8.93l-8.33,12.96,9.43,14.02h-8.93l-6.7-10.68h-5.81v10.68H0V0Z"/><path d="M42.29,23.35h-10.39v-7.1h17.91v19.87h10.39v7.1h-17.91v-19.87ZM46.75.02h7.58v12.02h-7.58V.02Z"/><path d="M63.89,34.08h8.23c.36,2.4,2.42,3.5,5.5,3.5,2.3,0,4.2-.79,4.2-2.38,0-1.37-1.49-1.85-2.83-2.06l-5.45-.89c-5.35-.86-8.5-3.89-8.5-8.11,0-5.16,4.75-8.54,11.54-8.54s12.02,3.29,12.43,8.95h-8.23c-.24-1.82-2.18-2.76-4.39-2.76s-3.7.89-3.7,2.18c0,.98.89,1.73,2.81,2.06l5.45.96c5.71,1.01,8.54,3.77,8.54,7.85,0,5.4-4.82,8.93-11.98,8.93-7.56,0-13.3-3.62-13.63-9.7Z"/><path d="M93.21,29.95c0-8.64,6.34-14.35,14.52-14.35,8.62,0,14.09,6.19,14.09,14.38v1.94h-21.36c.77,3.38,3.43,5.35,7.27,5.35,2.83,0,5.04-1.08,5.71-3.1h8.23c-1.82,6.29-7.06,9.6-13.85,9.6-8.88,0-14.62-5.66-14.62-13.83ZM100.7,26.83h13.9c-1.01-2.9-3.31-4.73-6.91-4.73s-5.98,1.78-6.98,4.73Z"/><path d="M126.07,16.25h7.51v3.14c1.42-2.45,4.58-3.74,8.42-3.74,7.25,0,11.76,4.32,11.76,11.09v16.49h-7.51v-14.5c0-3.72-2.06-5.95-5.95-5.95-3.48,0-6.46,1.87-6.72,6.29v14.16h-7.51v-26.98Z"/><path d="M168.43,23.35h-10.39v-7.1h10.39V1.37h7.51v14.88h10.39v7.1h-10.39v19.87h-7.51v-19.87Z"/><path d="M189.98,29.95c0-8.64,6.34-14.35,14.52-14.35,8.62,0,14.09,6.19,14.09,14.38v1.94h-21.36c.77,3.38,3.43,5.35,7.27,5.35,2.83,0,5.04-1.08,5.71-3.1h8.23c-1.82,6.29-7.06,9.6-13.85,9.6-8.88,0-14.62-5.66-14.62-13.83ZM197.46,26.83h13.9c-1.01-2.9-3.31-4.73-6.91-4.73s-5.98,1.78-6.99,4.73Z"/><path d="M222.21,29.71c0-8.3,5.86-14.09,14.35-14.09,7.56,0,13.08,4.56,13.92,11.35h-8.26c-.65-2.64-2.81-4.25-5.66-4.25-4.08,0-6.79,2.76-6.79,6.98s2.71,6.98,6.79,6.98c2.86,0,5.04-1.66,5.69-4.37h8.23c-.82,6.84-6.31,11.45-13.92,11.45-8.5,0-14.35-5.81-14.35-14.07Z"/><path d="M254.73,0h7.51v19.39c1.42-2.45,4.58-3.74,8.42-3.74,7.22,0,11.76,4.34,11.76,11.09v16.49h-7.51v-14.5c0-3.72-2.06-5.95-5.95-5.95-3.48,0-6.46,1.87-6.72,6.29v14.16h-7.51V0Z"/></svg>です。</p>
+    <p class="hero-business-name">ビジネスネームは<span class="visually-hidden">kisentech</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 282.43 43.78" width="282.43" height="43.78" aria-hidden="true"><path d="M0,0h7.51v25.44h5.95l5.45-9.19h8.93l-8.33,12.96,9.43,14.02h-8.93l-6.7-10.68h-5.81v10.68H0V0Z"/><path d="M42.29,23.35h-10.39v-7.1h17.91v19.87h10.39v7.1h-17.91v-19.87ZM46.75.02h7.58v12.02h-7.58V.02Z"/><path d="M63.89,34.08h8.23c.36,2.4,2.42,3.5,5.5,3.5,2.3,0,4.2-.79,4.2-2.38,0-1.37-1.49-1.85-2.83-2.06l-5.45-.89c-5.35-.86-8.5-3.89-8.5-8.11,0-5.16,4.75-8.54,11.54-8.54s12.02,3.29,12.43,8.95h-8.23c-.24-1.82-2.18-2.76-4.39-2.76s-3.7.89-3.7,2.18c0,.98.89,1.73,2.81,2.06l5.45.96c5.71,1.01,8.54,3.77,8.54,7.85,0,5.4-4.82,8.93-11.98,8.93-7.56,0-13.3-3.62-13.63-9.7Z"/><path d="M93.21,29.95c0-8.64,6.34-14.35,14.52-14.35,8.62,0,14.09,6.19,14.09,14.38v1.94h-21.36c.77,3.38,3.43,5.35,7.27,5.35,2.83,0,5.04-1.08,5.71-3.1h8.23c-1.82,6.29-7.06,9.6-13.85,9.6-8.88,0-14.62-5.66-14.62-13.83ZM100.7,26.83h13.9c-1.01-2.9-3.31-4.73-6.91-4.73s-5.98,1.78-6.98,4.73Z"/><path d="M126.07,16.25h7.51v3.14c1.42-2.45,4.58-3.74,8.42-3.74,7.25,0,11.76,4.32,11.76,11.09v16.49h-7.51v-14.5c0-3.72-2.06-5.95-5.95-5.95-3.48,0-6.46,1.87-6.72,6.29v14.16h-7.51v-26.98Z"/><path d="M168.43,23.35h-10.39v-7.1h10.39V1.37h7.51v14.88h10.39v7.1h-10.39v19.87h-7.51v-19.87Z"/><path d="M189.98,29.95c0-8.64,6.34-14.35,14.52-14.35,8.62,0,14.09,6.19,14.09,14.38v1.94h-21.36c.77,3.38,3.43,5.35,7.27,5.35,2.83,0,5.04-1.08,5.71-3.1h8.23c-1.82,6.29-7.06,9.6-13.85,9.6-8.88,0-14.62-5.66-14.62-13.83ZM197.46,26.83h13.9c-1.01-2.9-3.31-4.73-6.91-4.73s-5.98,1.78-6.99,4.73Z"/><path d="M222.21,29.71c0-8.3,5.86-14.09,14.35-14.09,7.56,0,13.08,4.56,13.92,11.35h-8.26c-.65-2.64-2.81-4.25-5.66-4.25-4.08,0-6.79,2.76-6.79,6.98s2.71,6.98,6.79,6.98c2.86,0,5.04-1.66,5.69-4.37h8.23c-.82,6.84-6.31,11.45-13.92,11.45-8.5,0-14.35-5.81-14.35-14.07Z"/><path d="M254.73,0h7.51v19.39c1.42-2.45,4.58-3.74,8.42-3.74,7.22,0,11.76,4.34,11.76,11.09v16.49h-7.51v-14.5c0-3.72-2.06-5.95-5.95-5.95-3.48,0-6.46,1.87-6.72,6.29v14.16h-7.51V0Z"/></svg>です。</p>
     <div class="social-links">
       <a href="https://github.com/kisentech" class="social-link icon-only" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
         <img class="icon-github-dark" src="GitHub_Invertocat_White.svg" alt="" aria-hidden="true">
@@ -450,18 +568,18 @@
               <li>Managed Serviceからas a Cloud Serviceへの移行</li>
               <li>LP制作</li>
             </ul>
-            <div class="tags">
-              <span class="tag">AEM On-premise</span>
-              <span class="tag">AEM Managed Service</span>
-              <span class="tag">AEM as a Cloud Service</span>
-              <span class="tag">Java</span>
-              <span class="tag">HTML</span>
-              <span class="tag">CSS, SCSS, LESS</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">TypeScript</span>
-              <span class="tag">AWS</span>
-              <span class="tag">Claude Code</span>
-            </div>
+            <ul class="tags">
+              <li class="tag">AEM On-premise</li>
+              <li class="tag">AEM Managed Service</li>
+              <li class="tag">AEM as a Cloud Service</li>
+              <li class="tag">Java</li>
+              <li class="tag">HTML</li>
+              <li class="tag">CSS, SCSS, LESS</li>
+              <li class="tag">JavaScript</li>
+              <li class="tag">TypeScript</li>
+              <li class="tag">AWS</li>
+              <li class="tag">Claude Code</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -475,20 +593,20 @@
               <li>AEM環境構築・保守</li>
               <li>AEMカスタマイズ、コンポーネント、テンプレート、ワークフロー制作、コンテンツ制作等</li>
             </ul>
-            <div class="tags">
-              <span class="tag">AEM On-premise</span>
-              <span class="tag">Java</span>
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">React</span>
-              <span class="tag">SQL</span>
-              <span class="tag">GraphQL</span>
-              <span class="tag">Apache httpd</span>
-              <span class="tag">AEM Dispatcher</span>
-              <span class="tag">Linux</span>
-              <span class="tag">AWS</span>
-            </div>
+            <ul class="tags">
+              <li class="tag">AEM On-premise</li>
+              <li class="tag">Java</li>
+              <li class="tag">HTML</li>
+              <li class="tag">CSS</li>
+              <li class="tag">JavaScript</li>
+              <li class="tag">React</li>
+              <li class="tag">SQL</li>
+              <li class="tag">GraphQL</li>
+              <li class="tag">Apache httpd</li>
+              <li class="tag">AEM Dispatcher</li>
+              <li class="tag">Linux</li>
+              <li class="tag">AWS</li>
+            </ul>
           </div>
         </div>
         <div class="timeline-item">
@@ -498,21 +616,22 @@
             <ul class="desc-list">
               <li>金融機関の基幹システムおよび社内業務システムの開発・保守</li>
             </ul>
-            <div class="tags">
-              <span class="tag">C#</span>
-              <span class="tag">C++</span>
-              <span class="tag">Visual Basic</span>
-              <span class="tag">Java</span>
-              <span class="tag">Cobol</span>
-              <span class="tag">.NET Framework</span>
-              <span class="tag">SQL</span>
-              <span class="tag">Windows Server</span>
-            </div>
+            <ul class="tags">
+              <li class="tag">C#</li>
+              <li class="tag">C++</li>
+              <li class="tag">Visual Basic</li>
+              <li class="tag">Java</li>
+              <li class="tag">Cobol</li>
+              <li class="tag">.NET Framework</li>
+              <li class="tag">SQL</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- Footer -->
   <footer>
