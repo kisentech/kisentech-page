@@ -1,0 +1,90 @@
+kisentech-page — Licensing
+==========================
+
+This repository contains three kinds of material under three different sets of
+terms. Section 1 is a permissive open-source grant; sections 2 and 3 are not.
+Where a file appears in more than one section, the narrower grant controls.
+
+
+1. Source code — MIT License
+----------------------------
+
+The MIT License (reproduced in full at the end of this file) applies to the
+implementation of this site:
+
+  * the markup structure, stylesheets, and scripts in `index.html` and
+    `ja.html` — including the theme tokens, the FOUC-prevention and
+    theme-toggle scripts, and the layout CSS;
+  * `wrangler.jsonc`, `.assetsignore`, `.gitignore`;
+  * `README.md`, `CLAUDE.md`.
+
+It does not extend to the page copy or to the brand assets those files
+reference or embed. See section 2.
+
+
+2. kisentech brand and site content — all rights reserved
+---------------------------------------------------------
+
+Copyright (c) 2026 kisentech (Takuya Kisen). All rights reserved.
+
+No license is granted to the following, under the MIT License in section 1 or
+otherwise:
+
+  * `kisentech-logo.svg`, `kisentech-icon.svg`, `kisentech-icon.png`;
+  * the wordmark path data inlined into `index.html` and `ja.html`;
+  * the name "kisentech", the kisentech wordmark, and the square "k." mark,
+    whether registered or not;
+  * the textual content of the pages in both languages — headings, body copy,
+    experience and service descriptions, and the values of the `<title>`,
+    meta description, and JSON-LD fields.
+
+You may view and fork this repository on GitHub as permitted by GitHub's Terms
+of Service. Any other use of the material in this section — reproduction,
+redistribution, publication, or use of the marks in a way that suggests
+affiliation with or endorsement by kisentech — requires prior written
+permission: takuya@kisentech.net
+
+Reusing the code under section 1 is welcome. Replace the brand assets and the
+copy with your own.
+
+
+3. Third-party trademarks — not licensed by this repository
+-----------------------------------------------------------
+
+The following files are the trademarks of their respective owners. kisentech
+does not own them and cannot sublicense them. They are included only to link
+to the owner's profiles on those platforms, and their use is governed by each
+owner's brand guidelines, not by this file:
+
+  * `GitHub_Invertocat_Black.svg`, `GitHub_Invertocat_White.svg`
+    — GitHub, Inc. — https://github.com/logos
+  * `InBug-White.png`, `LI-In-Bug.png`
+    — LinkedIn Corporation — https://brand.linkedin.com/policies
+
+If you fork this repository, obtain these assets from their owners under those
+guidelines rather than relying on the copies here.
+
+
+--------------------------------------------------------------------------------
+MIT License (applies to section 1 only)
+--------------------------------------------------------------------------------
+
+Copyright (c) 2026 kisentech (Takuya Kisen)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
